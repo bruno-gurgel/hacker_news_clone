@@ -28,15 +28,16 @@ export function checkArgument(argument) {
 	}
 }
 
-async function fetchAndParseStories(url) {
+export async function fetchAndParseStories(url) {
 	const storiesIdsJson = await fetch(url);
 	const convertToObject = storiesIdsJson.json();
 	const getHeadStories = convertToObject.then((ids) => ids.slice(0, 50));
 
+	console.log(getHeadStories.then((response) => console.log(response.length)));
 	return getHeadStories;
 }
 
-async function fetchItems(ids) {
+export async function fetchItems(ids) {
 	const allItems = await Promise.all(ids.map(fetchAndParseIndividualItem));
 	return allItems;
 }

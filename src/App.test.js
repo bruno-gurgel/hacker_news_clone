@@ -1,12 +1,23 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import { checkArgument } from "./utils/api";
+import * as api from "./utils/api";
 
-describe("fetches the stories", () => {
+jest.mock("");
+
+describe("fetches and display the stories", () => {
 	test("checks argument", () => {
-		expect(checkArgument("new")).toBe(true);
-		expect(checkArgument("top")).toBe(true);
-		expect(checkArgument("test")).toBe(false);
-		expect(checkArgument(6)).toBe(false);
+		expect(api.checkArgument("new")).toBe(true);
+		expect(api.checkArgument("top")).toBe(true);
+		expect(api.checkArgument("test")).toBe(false);
+		expect(api.checkArgument(6)).toBe(false);
+	});
+	test("fetches and parse the stories", async () => {
+		const fetchDataLength = await api
+			.fetchAndParseStories(
+				"https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
+			)
+			.then((response) => response.length);
+
+		expect(fetchDataLength).toBe(50);
 	});
 });
