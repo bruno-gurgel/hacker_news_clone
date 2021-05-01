@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { checkArgument } from "./utils/api";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("fetches the stories", () => {
+	test("checks argument", () => {
+		expect(checkArgument("new")).toBe(true);
+		expect(checkArgument("top")).toBe(true);
+		expect(checkArgument("test")).toBe(false);
+		expect(checkArgument(6)).toBe(false);
+	});
 });

@@ -20,7 +20,7 @@ export async function getStories(storyType) {
 
 /**************************************************** */
 
-function checkArgument(argument) {
+export function checkArgument(argument) {
 	if ((typeof argument == "string" && argument == "new") || argument == "top") {
 		return true;
 	} else {
