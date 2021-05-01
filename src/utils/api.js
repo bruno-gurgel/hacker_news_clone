@@ -33,7 +33,6 @@ export async function fetchAndParseStories(url) {
 	const convertToObject = storiesIdsJson.json();
 	const getHeadStories = convertToObject.then((ids) => ids.slice(0, 50));
 
-	console.log(getHeadStories.then((response) => console.log(response.length)));
 	return getHeadStories;
 }
 

@@ -12,12 +12,8 @@ describe("fetches and display the stories", () => {
 		expect(api.checkArgument(6)).toBe(false);
 	});
 	test("fetches and parse the stories", async () => {
-		const fetchDataLength = await api
-			.fetchAndParseStories(
-				"https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
-			)
-			.then((response) => response.length);
+		const fetchedStories = await api.getStories("top").then((response) => response.length);
 
-		expect(fetchDataLength).toBe(50);
+		expect(fetchedStories).toBe(50);
 	});
 });
