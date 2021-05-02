@@ -5,7 +5,7 @@ export default function Home() {
 	const [stories, setStories] = useState([]);
 
 	useEffect(() => {
-		handleStories();
+		handleInitialStories();
 	}, []);
 
 	return (
@@ -18,7 +18,7 @@ export default function Home() {
 		</div>
 	);
 
-	function handleStories() {
+	function handleInitialStories() {
 		getStories("top").then((response) => setStories(response));
 	}
 }

@@ -1,8 +1,7 @@
+/* eslint-disable */
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 import * as api from "./utils/api";
-
-jest.mock("");
 
 describe("fetches and display the stories", () => {
 	test("checks argument", () => {
