@@ -17,6 +17,7 @@
 		"linebreak-style": ["error", "unix"],
 
 		"semi": ["error", "always"],
-		"eqeqeq": "off"
+		"eqeqeq": "off",
+		"no-unused-vars": "warn"
 	}
 }
