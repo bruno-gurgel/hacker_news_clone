@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import { getStories } from "../utils/api";
 
-export default function Home() {
+export default function Home({ storyType, location }) {
 	const [stories, setStories] = useState([]);
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		setLoading(true);
-		handleInitialStories();
-	}, []);
+		handleInitialStories(storyType);
+	}, [location.pathname]);
 
 	return (
 		<div className="home__container">
@@ -28,9 +28,9 @@ export default function Home() {
 		</div>
 	);
 
-	function handleInitialStories() {
-		getStories("top").then((response) => {
-			setStories(response);
+	function handleInitialStories(type) {
+		getStories(type).then((fetchedStories) => {
+			setStories(fetchedStories);
 			setLoading(false);
 		});
 	}
