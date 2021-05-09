@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Switch } from "react-router";
 import "./App.css";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 
-function App(props) {
-	console.log(props);
+function App() {
 	return (
 		<div className="App">
 			<Route path="/" component={Navigation} />
