@@ -43,6 +43,10 @@
 	opacity: 0.5;
 }
 
+.stories__info {
+	color: hsl(0, 0%, 50%);
+	margin-top: 0.5rem;
+}
 .loading {
 	font-size: 30px;
 }
