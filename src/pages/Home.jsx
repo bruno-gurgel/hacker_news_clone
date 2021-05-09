@@ -27,7 +27,8 @@ export default function Home({ storyType, location }) {
 									</a>
 									<p className="stories__info">
 										by {story.by} on {formatDate(story.time)} with{" "}
-										{story.descendants} comments
+										{story.descendants}{" "}
+										{story.descendants == 1 ? "comment" : "comments"}
 									</p>
 								</li>
 							)
