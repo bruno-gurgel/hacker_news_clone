@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import { getStories } from "../utils/api";
 import { formatDate } from "../utils/helpers";
@@ -27,8 +28,10 @@ export default function Home({ storyType, location }) {
 									</a>
 									<p className="stories__info">
 										by {story.by} on {formatDate(story.time)} with{" "}
-										{story.descendants}{" "}
-										{story.descendants == 1 ? "comment" : "comments"}
+										<Link to="/post">
+											{story.descendants}{" "}
+											{story.descendants == 1 ? "comment" : "comments"}
+										</Link>
 									</p>
 								</li>
 							)
