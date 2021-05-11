@@ -19,23 +19,28 @@ export default function Home({ storyType, location }) {
 			<ul className="stories__list">
 				{Array.isArray(stories) &&
 					!loading &&
-					stories.map(
-						(story) =>
-							console.log(stories) || (
-								<li key={story.id} className="stories__item">
-									<a href={story.url} className="stories__link">
-										{story.title}
-									</a>
-									<p className="stories__info">
-										by {story.by} on {formatDate(story.time)} with{" "}
-										<Link to="/post">
-											{story.descendants}{" "}
-											{story.descendants == 1 ? "comment" : "comments"}
-										</Link>
-									</p>
-								</li>
-							)
-					)}
+					stories.map((story) => (
+						<li key={story.id} className="stories__item">
+							<a href={story.url} className="stories__link">
+								{story.title}
+							</a>
+							<p className="stories__info">
+								by {story.by} on {formatDate(story.time)} with{" "}
+								<Link
+									to={{
+										pathname: "/post",
+										state: {
+											postName: story.title,
+											postLink: story.url,
+										},
+									}}
+								>
+									{story.descendants}{" "}
+									{story.descendants == 1 ? "comment" : "comments"}
+								</Link>
+							</p>
+						</li>
+					))}
 			</ul>
 		</div>
 	);
