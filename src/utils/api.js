@@ -20,7 +20,7 @@ export async function getStories(storyType) {
 
 /**************************************************** */
 
-export function checkArgument(argument) {
+function checkArgument(argument) {
 	if ((typeof argument == "string" && argument == "new") || argument == "top") {
 		return true;
 	} else {
@@ -28,7 +28,7 @@ export function checkArgument(argument) {
 	}
 }
 
-export async function fetchAndParseStories(url) {
+async function fetchAndParseStories(url) {
 	const storiesIdsJson = await fetch(url);
 	const convertToObject = storiesIdsJson.json();
 	const getHeadStories = convertToObject.then((ids) => ids.slice(0, 50));
@@ -36,7 +36,7 @@ export async function fetchAndParseStories(url) {
 	return getHeadStories;
 }
 
-export async function fetchItems(ids) {
+async function fetchItems(ids) {
 	const allItems = await Promise.all(ids.map(fetchAndParseIndividualItem));
 	return allItems;
 }
